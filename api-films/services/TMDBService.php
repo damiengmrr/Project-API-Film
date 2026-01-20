@@ -9,4 +9,4 @@ class TMDBService
         $response = file_get_contents($url);
         return json_decode($response, true);
     }
-}
+} ?>
