@@ -1,26 +1,28 @@
 <?php
 require_once __DIR__ . '/controllers/MovieController.php';
 
-header("Content-Type: application/json; charset=utf-8");
-
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $method = $_SERVER['REQUEST_METHOD'];
 
 if ($path === '/' || $path === '/index.php') {
-    echo json_encode(["status" => "ok", "message" => "API OK"]);
+    header("Location: /yflix.html");
     exit;
 }
+
+header("Content-Type: application/json; charset=utf-8");
+
 if ($path === '/help') {
     echo json_encode([
         "status" => "ok",
         "routes" => [
-            "GET /" => "API OK",
             "GET /movies?type=popular" => "films TMDB",
-            "POST /favorites" => "ajout favori (JSON: id, title)"
+            "POST /favorites" => "ajout favori (JSON: id, title)",
+            "GET /favorites" => "liste favoris"
         ]
     ]);
     exit;
 }
+
 if ($path === '/movies' && $method === 'GET') {
     $type = $_GET['type'] ?? 'popular';
     MovieController::list($type);
@@ -29,6 +31,11 @@ if ($path === '/movies' && $method === 'GET') {
 
 if ($path === '/favorites' && $method === 'POST') {
     MovieController::addFavorite();
+    exit;
+}
+
+if ($path === '/favorites' && $method === 'GET') {
+    MovieController::getFavorites();
     exit;
 }
 

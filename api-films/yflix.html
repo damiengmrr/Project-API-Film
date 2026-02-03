@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ylix</title>
+  <link rel="stylesheet" href="./yflix.css"/>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="logo">Yflix</span>
+    <span class="tag"></span>
+  </div>
+
+  <div class="actions">
+    <div class="search">
+      <input id="searchInput" type="search" placeholder="Rechercher un film…" autocomplete="off" />
+      <button class="btn ghost" id="btnClearSearch" title="effacer">✕</button>
+    </div>
+
+    <button class="btn ghost" id="btnGrid" aria-pressed="true">Yflix</button>
+    <button class="btn ghost" id="btnSwipe" aria-pressed="false">Yswipe</button>
+    <button class="btn" id="btnFavorites">Favoris</button>
+  </div>
+</header>
+
+<main class="main">
+
+  <!-- HERO -->
+  <section id="hero" class="hero"></section>
+
+  <!-- ===== NETFLIX MODE (Rows) ===== -->
+  <section id="viewGrid" class="view view--active">
+    <div id="rows" class="rows"></div>
+  </section>
+
+  <!-- ===== SWIPE MODE ===== -->
+  <section id="viewSwipe" class="view">
+    <div id="swipe" class="swipe"></div>
+  </section>
+
+  <!-- FAVORITES DRAWER -->
+  <aside id="drawer" class="drawer" aria-hidden="true">
+    <div class="drawer__header">
+      <h2>Favoris</h2>
+      <button class="btn ghost" id="btnCloseDrawer">Fermer</button>
+    </div>
+    <div id="favoritesList" class="drawer__content"></div>
+  </aside>
+
+  <!-- MODAL DETAILS -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal__backdrop" id="modalBackdrop"></div>
+    <div class="modal__card" role="dialog" aria-modal="true">
+      <button class="modal__close" id="modalClose" title="fermer">✕</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+</main>
+
+<script src="./yflix.js"></script>
+</body>
+</html>
