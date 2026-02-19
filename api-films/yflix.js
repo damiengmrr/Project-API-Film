@@ -1,6 +1,4 @@
 const API_BASE = ""; 
-// si YFLIX est servi par http://localhost:8000/yflix.html => laisse "".
-// sinon (Live Server etc.) => "http://localhost:8000"
 
 const rowsEl = document.getElementById("rows");
 const heroEl = document.getElementById("hero");
@@ -34,8 +32,8 @@ const CATEGORIES = [
   { key: "now_playing", title: "Au cinéma",           hint: "now playing" },
 ];
 
-let cacheByType = {}; // { type: [movies...] }
-let allMovies = [];   // fusion pour search
+let cacheByType = {}; 
+let allMovies = [];
 let lastHero = null;
 
 function showToast(text){
