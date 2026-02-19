@@ -9,6 +9,17 @@ if ($path === '/' || $path === '/index.php') {
     exit;
 }
 
+if ($path === '/debug') {
+    require __DIR__ . '/debug.php';
+    exit;
+}
+
+if ($path === '/debug/reset') {
+    file_put_contents(__DIR__ . '/favorites.json', "[]");
+    header("Location: /debug");
+    exit;
+}
+
 header("Content-Type: application/json; charset=utf-8");
 
 if ($path === '/help') {
