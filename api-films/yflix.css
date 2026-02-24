@@ -1,8 +1,8 @@
 :root{
-  --bg:#0b0b0f;
-  --panel:#11111a;
-  --text:#f4f4f5;
-  --muted:rgba(255,255,255,.72);
+  --bg:#0b0b0f; /*#0b0b0f;*/
+  --panel:#ffffff;
+  --text:#ffffff;
+  --muted:rgb(255, 255, 255);
   --line:rgba(255,255,255,.10);
   --red:#e50914;
   --radius:18px;
@@ -20,7 +20,16 @@ body{
     radial-gradient(1000px 700px at 90% 10%, rgba(255,255,255,.08), transparent 60%),
     var(--bg);
 }
-
+.logo {
+  height: 120px;
+  width: flex;
+  display: block;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 /* Topbar */
 .topbar{
   position:sticky;
@@ -31,9 +40,9 @@ body{
   justify-content:space-between;
   gap:12px;
   padding:14px 18px;
-  background: rgba(11,11,15,.85);
+  /* background: rgba(74, 74, 74, 0.85); */
   backdrop-filter: blur(10px);
-  border-bottom:1px solid var(--line);
+  /* border-bottom:1px solid var(--line); */
 }
 
 .brand{display:flex; align-items:baseline; gap:10px}
