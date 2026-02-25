@@ -95,7 +95,6 @@ function closeDrawer(){
   drawer.setAttribute("aria-hidden", "true");
 }
 
-/* Modal */
 function openModal(movie){
   const bg = backdropUrl(movie.backdrop_path) || posterUrl(movie.poster_path);
   modalContent.innerHTML = `
@@ -133,7 +132,6 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeModal();
 });
 
-/* Modes */
 function setMode(mode){
   const isGrid = mode === "grid";
   viewGrid.classList.toggle("view--active", isGrid);
@@ -145,7 +143,6 @@ function setMode(mode){
 btnGrid.addEventListener("click", () => setMode("grid"));
 btnSwipe.addEventListener("click", () => setMode("swipe"));
 
-/* Favorites UI */
 btnFavorites.addEventListener("click", async () => {
   openDrawer();
   favoritesList.innerHTML = "loading...";
@@ -168,7 +165,6 @@ btnFavorites.addEventListener("click", async () => {
 
 btnCloseDrawer.addEventListener("click", closeDrawer);
 
-/* Hero */
 function renderHero(movies){
   if (!movies.length){
     heroEl.innerHTML = "";
@@ -202,7 +198,6 @@ function renderHero(movies){
   };
 }
 
-/* Rows rendering */
 function renderRow(catKey, title, hint, movies){
   return `
     <section class="row" data-row="${catKey}">
@@ -258,7 +253,6 @@ function bindRowEvents(container, movies){
   });
 }
 
-/* Swipe */
 function renderSwipe(movies){
   swipeEl.innerHTML = movies.map(m => `
     <section class="slide" style="background-image:url('${backdropUrl(m.backdrop_path) || posterUrl(m.poster_path)}')">
@@ -301,7 +295,6 @@ function renderSwipe(movies){
   });
 }
 
-/* Search (client-side, simple) */
 function renderSearchResults(query){
   const q = query.trim().toLowerCase();
   if (!q){
@@ -337,7 +330,6 @@ searchInput.addEventListener("input", () => {
   searchTimer = setTimeout(() => renderSearchResults(searchInput.value), 180);
 });
 
-/* Build rows from cached categories */
 function renderNetflixRows(){
   rowsEl.innerHTML = "";
   let merged = [];
@@ -353,22 +345,21 @@ function renderNetflixRows(){
     bindRowEvents(rowsEl, movies);
   }
 
-  // allMovies = dédoublonné
   const map = new Map();
   for (const m of merged) map.set(m.id, m);
   allMovies = Array.from(map.values());
 
-  // hero + swipe sur populaires (ou fallback)
+
   const base = cacheByType.popular || allMovies;
   renderHero(base);
   renderSwipe(base);
 }
 
-/* Init */
+
 async function init(){
   rowsEl.innerHTML = `<div style="color:rgba(255,255,255,.6);font-weight:800">loading…</div>`;
 
-  // charger catégories en parallèle
+
   const tasks = CATEGORIES.map(async (c) => {
     const data = await fetchMovies(c.key);
     const movies = Array.isArray(data.results) ? data.results : [];

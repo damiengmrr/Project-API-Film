@@ -58,6 +58,8 @@ PROJECT-API-FILM/
 ├── yflix.css
 ├── yflix.html
 ├── yflix.js
+├── landing.css
+├── index.html
 └── README.md
 ```
 
@@ -84,7 +86,7 @@ php -S localhost:8000
 Puis accéder à :
 
 ```
-http://localhost:8000/yflix.html
+http://localhost:8000/index.html
 ```
 
 ---
