@@ -110,6 +110,6 @@ http://localhost:8000/index.html
 
 ---
 
-## Auteur
+## Par
 
 Damien Gamarra
